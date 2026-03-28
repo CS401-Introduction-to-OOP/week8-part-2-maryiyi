@@ -1,25 +1,33 @@
-﻿
-using Week8;
+﻿namespace Week8.task_1;
 
-var file = new FileResource("report.txt");
-var network = new NetworkResource("api.company.local");
-var manager = new ResourceManager<Resource>();
+public static class Task1
+{
+    public static void Run()
+    {
+        Console.WriteLine("Task 1:");
+        var file = new FileResource("report.txt");
+        var network = new NetworkResource("api.company.local");
+        var manager = new ResourceManager<Resource>();
 // TODO:
 // 1. Add resources to manager
-manager.Add(file);
-manager.Add(network);
+        manager.Add(file);
+        manager.Add(network);
 
 // 2. Open all resources
-manager.OpenAll();
+        manager.OpenAll();
 
 // 3. Demonstrate using with one disposable resource
-using (var f = new FileResource("fldfjk.txt"))
-{
-    f.Open();
-    Console.WriteLine($"open: {f.Name}");
-}
+        using (var f = new FileResource("fldfjk.txt"))
+        {
+            f.Open();
+            Console.WriteLine($"open: {f.Name}");
+        }
 
 // 4. Close all resources
-manager.CloseAll();
+        manager.CloseAll();
 
-Console.WriteLine("Done.");
+        Console.WriteLine("Done.");
+    }
+}
+
+
